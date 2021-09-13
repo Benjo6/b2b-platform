@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::PROFILE;
 
     /**
      * Create a new controller instance.
@@ -40,6 +40,7 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
+    
 
     /**
      * Get a validator for an incoming registration request.
@@ -85,4 +86,10 @@ class RegisterController extends Controller
     {
         
     }
+    public function index(){
+        return view('register-profile');
+    }
+
+
+    
 }

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdvertisementsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +17,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Returns a view you can use for testing new things (will be removed at some point)
+
+
+Auth::routes(['register' => false]);
+Route::get('/register-profile', [RegisterController::class, 'index'])->name('register');
+
 Route::get('testing', function () {
     return view('testing');
 });
-Route::get('profile', function () {
-    return view('profile');
-});
+
 
 Route::get('/', function () {
     return view('temp-landing-page');
@@ -39,5 +44,6 @@ Route::get('videos', [App\Http\Controllers\VideosController::class, 'index']);
 Route::get('addons', [App\Http\Controllers\AddonsController::class, 'index']);
 
 Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
